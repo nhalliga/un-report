@@ -1,0 +1,48 @@
+[Workspace loaded from ~/R/BASH_R_Workshop_08022021/.RData]
+
+> source('~/R/BASH_R_Workshop_08022021/check_setup.R', echo=TRUE)
+
+> packages <- c('tidyverse', 'rmarkdown')
+
+> pkgs_installed <- sapply(packages,
++                          requireNamespace, quietly = TRUE)
+
+> if (!all(pkgs_installed)) {
++     install.packages(packages)
++ }
+
+> library(dplyr, quietly = TRUE)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+> pkg_versions <- installed.packages() %>%
++     dplyr::as_tibble() %>%
++     filter(Package %in% packages) %>%
++     select(Package, Version)
+
+> print(getwd())
+[1] "H:/My Documents/R/BASH_R_Workshop_08022021"
+
+> print(system('git --version', intern = TRUE))
+[1] "git version 2.32.0.windows.2"
+
+> print(R.Version()$version.string)
+[1] "R version 3.6.1 (2019-07-05)"
+
+> print(pkg_versions)
+# A tibble: 2 x 2
+  Package   Version
+  <chr>     <chr>  
+1 rmarkdown 2.9    
+2 tidyverse 1.3.1  
+Warning message:
+package ‘dplyr’ was built under R version 3.6.3 

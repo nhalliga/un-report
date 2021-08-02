@@ -1,0 +1,15 @@
+$ pwd
+/h/My Documents/R/BASH_R_Workshop_08022021
+$ ls -l
+total 1176
+-rw-r--r-- 1 nhalliga 1049089    218 Aug  2 09:04 BASH_R_Workshop_08022021.Rproj
+-rw-r--r-- 1 nhalliga 1049089   2432 Aug  2 12:52 Courtney_gdp_population_example.R
+-rw-r--r-- 1 nhalliga 1049089  32055 Jul 19 10:12 Proof_of_R_software_07192021.txt
+-rw-r--r-- 1 nhalliga 1049089 492028 Jul 19 10:04 co2-un-data.csv
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 14:04 code/
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 13:54 data/
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 13:48 figures/
+-rw-r--r-- 1 nhalliga 1049089   1169 Jul 29 15:54 rev_Proof_of_Sortware_07292021.txt
+-rw-r--r-- 1 nhalliga 1049089 660206 Jul 19 10:04 rnd-un-data.csv
+$ git config --global user.name "nhalliga"
+ git config --global user.email "nhalliga@umich.edu"

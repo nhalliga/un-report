@@ -1,0 +1,677 @@
+For BASH/R Workshop August 2-3, 2021
+
+
+> source('~/R/BASH_R_Workshop_08022021/check_setup.R', echo=TRUE)
+
+> packages <- c('tidyverse', 'rmarkdown')
+
+> pkgs_installed <- sapply(packages,
++                          requireNamespace, quietly = TRUE)
+
+> if (!all(pkgs_installed)) {
++     install.packages(packages)
++ }
+Error in install.packages : Updating loaded packages
+
+> library(dplyr, quietly = TRUE)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+> pkg_versions <- installed.packages() %>%
++     dplyr::as_tibble() %>%
++     filter(Package %in% packages) %>%
++     select(Package, Version)
+
+> print(getwd())
+[1] "H:/My Documents/R/BASH_R_Workshop_08022021"
+
+> print(system('git --version', intern = TRUE))
+Error in system("git --version", intern = TRUE) : 'git' not found
+In addition: Warning message:
+package ‘dplyr’ was built under R version 3.6.3 
+
+Restarting R session...
+
+> install.packages(packages)
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+Installing packages into ‘H:/My Documents/R/win-library/3.6’
+(as ‘lib’ is unspecified)
+also installing the dependencies ‘xfun’, ‘broom’, ‘ggplot2’, ‘tinytex’
+
+
+  There are binary versions available but the source versions are later:
+          binary source needs_compilation
+xfun        0.22   0.24              TRUE
+broom      0.7.6  0.7.8             FALSE
+ggplot2    3.3.3  3.3.5             FALSE
+tinytex     0.31   0.32             FALSE
+rmarkdown    2.8    2.9             FALSE
+
+  Binaries will be installed
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.6/xfun_0.22.zip'
+Content type 'application/zip' length 323923 bytes (316 KB)
+downloaded 316 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.6/tidyverse_1.3.1.zip'
+Content type 'application/zip' length 430096 bytes (420 KB)
+downloaded 420 KB
+
+package ‘xfun’ successfully unpacked and MD5 sums checked
+package ‘tidyverse’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\nhalliga\AppData\Local\Temp\RtmpKqg8fI\downloaded_packages
+installing the source packages ‘broom’, ‘ggplot2’, ‘tinytex’, ‘rmarkdown’
+
+trying URL 'https://cran.rstudio.com/src/contrib/broom_0.7.8.tar.gz'
+Content type 'application/x-gzip' length 632611 bytes (617 KB)
+downloaded 617 KB
+
+trying URL 'https://cran.rstudio.com/src/contrib/ggplot2_3.3.5.tar.gz'
+Content type 'application/x-gzip' length 3063309 bytes (2.9 MB)
+downloaded 2.9 MB
+
+trying URL 'https://cran.rstudio.com/src/contrib/tinytex_0.32.tar.gz'
+Content type 'application/x-gzip' length 30014 bytes (29 KB)
+downloaded 29 KB
+
+trying URL 'https://cran.rstudio.com/src/contrib/rmarkdown_2.9.tar.gz'
+Content type 'application/x-gzip' length 3246617 bytes (3.1 MB)
+downloaded 3.1 MB
+
+* installing *source* package 'broom' ...
+** package 'broom' successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package 'broom'
+    finding HTML links ... done
+    augment.Mclust                          html  
+    augment.betamfx                         html  
+    augment.betareg                         html  
+    augment.clm                             html  
+    augment.coxph                           html  
+    augment.decomposed.ts                   html  
+    augment.drc                             html  
+    augment.factanal                        html  
+    augment.felm                            html  
+    augment.fixest                          html  
+    augment.gam                             html  
+    augment.glm                             html  
+    augment.glmRob                          html  
+    augment.htest                           html  
+    augment.ivreg                           html  
+    augment.kmeans                          html  
+    augment.lm                              html  
+    augment.lmRob                           html  
+    augment.loess                           html  
+    augment.mfx                             html  
+    augment.mjoint                          html  
+    augment.mlogit                          html  
+    augment.nlrq                            html  
+    augment.nls                             html  
+    augment.pam                             html  
+    augment.plm                             html  
+    augment.poLCA                           html  
+    augment.polr                            html  
+    augment.prcomp                          html  
+    augment.rlm                             html  
+    augment.rma                             html  
+    augment.robustbase.glmrob               html  
+    augment.robustbase.lmrob                html  
+    augment.rq                              html  
+    augment.rqs                             html  
+    augment.sarlm                           html  
+    augment.smooth.spline                   html  
+    augment.speedlm                         html  
+    augment.stl                             html  
+    augment.survreg                         html  
+    augment_columns                         html  
+    bootstrap                               html  
+    broom                                   html  
+    confint_tidy                            html  
+    data.frame_tidiers                      html  
+    durbinWatsonTest_tidiers                html  
+    finish_glance                           html  
+    fix_data_frame                          html  
+    glance.Arima                            html  
+    glance.Mclust                           html  
+    glance.Rchoice                          html  
+    glance.aareg                            html  
+    glance.aov                              html  
+    glance.betamfx                          html  
+    glance.betareg                          html  
+    glance.biglm                            html  
+    glance.binDesign                        html  
+    glance.cch                              html  
+    glance.clm                              html  
+    glance.clmm                             html  
+    glance.coeftest                         html  
+    glance.coxph                            html  
+    glance.crr                              html  
+    glance.cv.glmnet                        html  
+    glance.drc                              html  
+    glance.ergm                             html  
+    glance.factanal                         html  
+    glance.felm                             html  
+    glance.fitdistr                         html  
+    glance.fixest                           html  
+    glance.gam                              html  
+    glance.garch                            html  
+    glance.geeglm                           html  
+    glance.glm                              html  
+    glance.glmRob                           html  
+    glance.glmnet                           html  
+    glance.gmm                              html  
+    glance.ivreg                            html  
+    glance.kmeans                           html  
+    glance.lavaan                           html  
+    glance.lm                               html  
+    glance.lmRob                            html  
+    glance.lmodel2                          html  
+    glance.margins                          html  
+    glance.mfx                              html  
+    glance.mjoint                           html  
+    glance.mlogit                           html  
+    glance.muhaz                            html  
+    glance.multinom                         html  
+    glance.negbin                           html  
+    glance.nlrq                             html  
+    glance.nls                              html  
+    glance.orcutt                           html  
+    glance.pam                              html  
+    glance.plm                              html  
+    glance.poLCA                            html  
+    glance.polr                             html  
+    glance.pyears                           html  
+    glance.ridgelm                          html  
+    glance.rlm                              html  
+    glance.rma                              html  
+    glance.robustbase.lmrob                 html  
+    glance.rq                               html  
+    glance.sarlm                            html  
+    glance.smooth.spline                    html  
+    glance.speedglm                         html  
+    glance.speedlm                          html  
+    glance.summary.lm                       html  
+    glance.survdiff                         html  
+    glance.survexp                          html  
+    glance.survfit                          html  
+    glance.survreg                          html  
+    glance.svyglm                           html  
+    glance.svyolr                           html  
+    glance.varest                           html  
+    glance_gam_hastie                       html  
+    glance_optim                            html  
+    leveneTest_tidiers                      html  
+    list_tidiers                            html  
+    metafor_tidiers                         html  
+    null_tidiers                            html  
+    reexports                               html  
+    sp_tidiers                              html  
+    sparse_tidiers                          html  
+    summary_tidiers                         html  
+    tidy.Arima                              html  
+    tidy.Kendall                            html  
+    tidy.Mclust                             html  
+    tidy.Rchoice                            html  
+    tidy.TukeyHSD                           html  
+    tidy.aareg                              html  
+    tidy.acf                                html  
+    tidy.anova                              html  
+    tidy.aov                                html  
+    tidy.aovlist                            html  
+    tidy.betamfx                            html  
+    tidy.betareg                            html  
+    tidy.biglm                              html  
+    tidy.binDesign                          html  
+    tidy.binWidth                           html  
+    tidy.boot                               html  
+    tidy.btergm                             html  
+    tidy.cch                                html  
+    tidy.cld                                html  
+    tidy.clm                                html  
+    tidy.clmm                               html  
+    tidy.coeftest                           html  
+    tidy.confint.glht                       html  
+    tidy.confusionMatrix                    html  
+    tidy.coxph                              html  
+    tidy.crr                                html  
+    tidy.cv.glmnet                          html  
+    tidy.density                            html  
+    tidy.dist                               html  
+    tidy.drc                                html  
+    tidy.emmGrid                            html  
+    tidy.epi.2by2                           html  
+    tidy.ergm                               html  
+    tidy.factanal                           html  
+    tidy.felm                               html  
+    tidy.fitdistr                           html  
+    tidy.fixest                             html  
+    tidy.ftable                             html  
+    tidy.gam                                html  
+    tidy.garch                              html  
+    tidy.geeglm                             html  
+    tidy.glht                               html  
+    tidy.glm                                html  
+    tidy.glmRob                             html  
+    tidy.glmnet                             html  
+    tidy.gmm                                html  
+    tidy.htest                              html  
+    tidy.ivreg                              html  
+    tidy.kappa                              html  
+    tidy.kde                                html  
+    tidy.kmeans                             html  
+    tidy.lavaan                             html  
+    tidy.lm                                 html  
+    tidy.lm.beta                            html  
+    tidy.lmRob                              html  
+    tidy.lmodel2                            html  
+    tidy.lsmobj                             html  
+    tidy.manova                             html  
+    tidy.map                                html  
+    tidy.margins                            html  
+    tidy.mediate                            html  
+    tidy.mfx                                html  
+    tidy.mjoint                             html  
+    tidy.mle2                               html  
+    tidy.mlm                                html  
+    tidy.mlogit                             html  
+    tidy.muhaz                              html  
+    tidy.multinom                           html  
+    tidy.negbin                             html  
+    tidy.nlrq                               html  
+    tidy.nls                                html  
+    tidy.orcutt                             html  
+    tidy.pairwise.htest                     html  
+    tidy.pam                                html  
+    tidy.plm                                html  
+    tidy.poLCA                              html  
+    tidy.polr                               html  
+    tidy.power.htest                        html  
+    tidy.prcomp                             html  
+    tidy.pyears                             html  
+    tidy.rcorr                              html  
+    tidy.ref.grid                           html  
+    tidy.regsubsets                         html  
+    tidy.ridgelm                            html  
+    tidy.rlm                                html  
+    tidy.robustbase.glmrob                  html  
+    tidy.robustbase.lmrob                   html  
+    tidy.roc                                html  
+    tidy.rq                                 html  
+    tidy.rqs                                html  
+    tidy.sarlm                              html  
+    tidy.spec                               html  
+    tidy.speedglm                           html  
+    tidy.speedlm                            html  
+    tidy.summary.glht                       html  
+    tidy.summary.lm                         html  
+    tidy.summary_emm                        html  
+    tidy.survdiff                           html  
+    tidy.survexp                            html  
+    tidy.survfit                            html  
+    tidy.survreg                            html  
+    tidy.svyglm                             html  
+    tidy.svyolr                             html  
+    tidy.systemfit                          html  
+    tidy.table                              html  
+    tidy.ts                                 html  
+    tidy.varest                             html  
+    tidy.zoo                                html  
+    tidy_gam_hastie                         html  
+    tidy_irlba                              html  
+    tidy_optim                              html  
+    tidy_svd                                html  
+    tidy_xyz                                html  
+    vector_tidiers                          html  
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+*** arch - i386
+*** arch - x64
+** testing if installed package can be loaded from final location
+*** arch - i386
+*** arch - x64
+** testing if installed package keeps a record of temporary installation path
+* DONE (broom)
+* installing *source* package 'ggplot2' ...
+** package 'ggplot2' successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package 'ggplot2'
+    finding HTML links ... done
+    absoluteGrob                            html  
+    add_theme                               html  
+    aes                                     html  
+    aes_                                    html  
+    aes_all                                 html  
+    aes_auto                                html  
+    aes_colour_fill_alpha                   html  
+    aes_eval                                html  
+    aes_group_order                         html  
+    aes_linetype_size_shape                 html  
+    aes_position                            html  
+    annotate                                html  
+    annotation_custom                       html  
+    annotation_logticks                     html  
+    annotation_map                          html  
+    annotation_raster                       html  
+    as.list.ggproto                         html  
+    as_labeller                             html  
+    autolayer                               html  
+    autoplot                                html  
+    benchplot                               html  
+    bidirection                             html  
+    binned_scale                            html  
+    borders                                 html  
+    calc_element                            html  
+    combine_vars                            html  
+    continuous_scale                        html  
+    coord_cartesian                         html  
+    coord_fixed                             html  
+    coord_flip                              html  
+    coord_map                               html  
+    coord_munch                             html  
+    coord_polar                             html  
+    coord_trans                             html  
+    cut_interval                            html  
+    diamonds                                html  
+    discrete_scale                          html  
+    draw_key                                html  
+    economics                               html  
+    element                                 html  
+    element_grob                            html  
+    element_render                          html  
+    expand_limits                           html  
+    expansion                               html  
+    facet_grid                              html  
+    facet_null                              html  
+    facet_wrap                              html  
+    faithfuld                               html  
+    find_panel                              html  
+    fortify-multcomp                        html  
+    fortify                                 html  
+    fortify.lm                              html  
+    fortify.map                             html  
+    fortify.sp                              html  
+    geom_abline                             html  
+    geom_bar                                html  
+    geom_bin_2d                             html  
+    geom_blank                              html  
+    geom_boxplot                            html  
+    geom_contour                            html  
+    geom_count                              html  
+    geom_density                            html  
+    geom_density_2d                         html  
+    geom_dotplot                            html  
+    geom_errorbarh                          html  
+    geom_function                           html  
+    geom_hex                                html  
+    geom_histogram                          html  
+    geom_jitter                             html  
+    geom_linerange                          html  
+    geom_map                                html  
+    geom_path                               html  
+    geom_point                              html  
+    geom_polygon                            html  
+    geom_qq                                 html  
+    geom_quantile                           html  
+    geom_ribbon                             html  
+    geom_rug                                html  
+    geom_segment                            html  
+    geom_smooth                             html  
+    geom_spoke                              html  
+    geom_text                               html  
+    geom_tile                               html  
+    geom_violin                             html  
+    get_alt_text                            html  
+    gg-add                                  html  
+    gg_dep                                  html  
+    ggplot                                  html  
+    ggplot2-ggproto                         html  
+    finding level-2 HTML links ... done
+
+    ggplot2-package                         html  
+    ggplotGrob                              html  
+    ggplot_add                              html  
+    ggplot_build                            html  
+    ggplot_gtable                           html  
+    ggproto                                 html  
+    ggsave                                  html  
+    ggsf                                    html  
+    ggtheme                                 html  
+    graphical-units                         html  
+    guide-exts                              html  
+    guide_axis                              html  
+    guide_bins                              html  
+    guide_colourbar                         html  
+    guide_coloursteps                       html  
+    guide_legend                            html  
+    guide_none                              html  
+    guides                                  html  
+    hmisc                                   html  
+    is.Coord                                html  
+    is.facet                                html  
+    is.ggplot                               html  
+    is.rel                                  html  
+    is.theme                                html  
+    label_bquote                            html  
+    labeller                                html  
+    labellers                               html  
+    labs                                    html  
+    last_plot                               html  
+    layer                                   html  
+    layer_sf                                html  
+    limits                                  html  
+    lims                                    html  
+    luv_colours                             html  
+    map_data                                html  
+    max_height                              html  
+    mean_se                                 html  
+    merge_element                           html  
+    midwest                                 html  
+    mpg                                     html  
+    msleep                                  html  
+    position_dodge                          html  
+    position_identity                       html  
+    position_jitter                         html  
+    position_jitterdodge                    html  
+    position_nudge                          html  
+    position_stack                          html  
+    presidential                            html  
+    print.ggplot                            html  
+    print.ggproto                           html  
+    qplot                                   html  
+    reexports                               html  
+    register_theme_elements                 html  
+    remove_missing                          html  
+    render_axes                             html  
+    render_strips                           html  
+    resolution                              html  
+    scale_alpha                             html  
+    scale_binned                            html  
+    scale_brewer                            html  
+    scale_colour_continuous                 html  
+    scale_colour_discrete                   html  
+    scale_continuous                        html  
+    scale_date                              html  
+    scale_discrete                          html  
+    scale_gradient                          html  
+    scale_grey                              html  
+    scale_hue                               html  
+    scale_identity                          html  
+    scale_linetype                          html  
+    scale_manual                            html  
+    scale_shape                             html  
+    scale_size                              html  
+    scale_steps                             html  
+    scale_type                              html  
+    scale_viridis                           html  
+    seals                                   html  
+    sec_axis                                html  
+    set_last_plot                           html  
+    sf_transform_xy                         html  
+    should_stop                             html  
+    standardise_aes_names                   html  
+    stat_ecdf                               html  
+    stat_ellipse                            html  
+    stat_identity                           html  
+    stat_sf_coordinates                     html  
+    stat_summary                            html  
+    stat_summary_2d                         html  
+    stat_unique                             html  
+    summarise_plot                          html  
+    summary.ggplot                          html  
+    theme                                   html  
+    theme_get                               html  
+    tidyeval                                html  
+    transform_position                      html  
+    translate_qplot_ggplot                  html  
+    translate_qplot_lattice                 html  
+    txhousing                               html  
+    update_defaults                         html  
+    update_labels                           html  
+    vars                                    html  
+    waiver                                  html  
+    wrap_dims                               html  
+    zeroGrob                                html  
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+*** arch - i386
+*** arch - x64
+** testing if installed package can be loaded from final location
+*** arch - i386
+*** arch - x64
+** testing if installed package keeps a record of temporary installation path
+* DONE (ggplot2)
+* installing *source* package 'tinytex' ...
+** package 'tinytex' successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  namespace 'xfun' 0.22 is being loaded, but >= 0.23 is required
+Calls: <Anonymous> ... namespaceImportFrom -> asNamespace -> loadNamespace
+Execution halted
+ERROR: lazy loading failed for package 'tinytex'
+* removing 'H:/My Documents/R/win-library/3.6/tinytex'
+* restoring previous 'H:/My Documents/R/win-library/3.6/tinytex'
+Warning in install.packages :
+  installation of package ‘tinytex’ had non-zero exit status
+* installing *source* package 'rmarkdown' ...
+** package 'rmarkdown' successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package 'rmarkdown'
+    finding HTML links ... done
+    all_output_formats                      html  
+    beamer_presentation                     html  
+    compile_notebook                        html  
+    context_document                        html  
+    convert_ipynb                           html  
+    default_output_format                   html  
+    draft                                   html  
+    find_external_resources                 html  
+    find_pandoc                             html  
+    github_document                         html  
+    html-dependencies                       html  
+    html_document                           html  
+    html_document_base                      html  
+    finding level-2 HTML links ... done
+
+    html_fragment                           html  
+    html_notebook                           html  
+    html_notebook_metadata                  html  
+    html_notebook_output                    html  
+    html_vignette                           html  
+    includes                                html  
+    ioslides_presentation                   html  
+    knit_params_ask                         html  
+    knitr_options                           html  
+    knitr_options_html                      html  
+    knitr_options_pdf                       html  
+    latex-dependencies                      html  
+    latex_dependency                        html  
+    md_document                             html  
+    metadata                                html  
+    navbar_html                             html  
+    odt_document                            html  
+    output_format                           html  
+    output_metadata                         html  
+    paged_table                             html  
+    pandoc_args                             html  
+    pandoc_available                        html  
+    pandoc_citeproc_convert                 html  
+    pandoc_convert                          html  
+    pandoc_exec                             html  
+    pandoc_options                          html  
+    pandoc_path_arg                         html  
+    pandoc_self_contained_html              html  
+    pandoc_template                         html  
+    parse_html_notebook                     html  
+    pdf_document                            html  
+    pkg_file_lua                            html  
+    powerpoint_presentation                 html  
+    publish_site                            html  
+    relative_to                             html  
+    render                                  html  
+    render_delayed                          html  
+    render_site                             html  
+    render_supporting_files                 html  
+    resolve_output_format                   html  
+    rmarkdown-package                       html  
+    rmarkdown_format                        html  
+    rmd_metadata                            html  
+    rtf_document                            html  
+    run                                     html  
+    shiny_prerendered_chunk                 html  
+    shiny_prerendered_clean                 html  
+    shiny_prerendered_server_start_code     html  
+    site_resources                          html  
+    slidy_presentation                      html  
+    tufte_handout                           html  
+    word_document                           html  
+    yaml_front_matter                       html  
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+*** arch - i386
+*** arch - x64
+** testing if installed package can be loaded from final location
+*** arch - i386
+*** arch - x64
+** testing if installed package keeps a record of temporary installation path
+* DONE (rmarkdown)
+
+The downloaded source packages are in
+	‘C:\Users\nhalliga\AppData\Local\Temp\RtmpKqg8fI\downloaded_packages’

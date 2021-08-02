@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1626703508547.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1992544939",
+    "id" : "E0777C2A",
+    "lastKnownWriteTime" : 1626703490,
+    "last_content_update" : 1626703490,
+    "path" : "~/R/BASH_R_Workshop_08022021/check_setup.R",
+    "project_path" : "check_setup.R",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
