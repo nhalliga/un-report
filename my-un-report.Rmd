@@ -1,0 +1,58 @@
+---
+title: "A UN Report on the Relationship between GDP and Life Expectancy"
+author: "Jule Krüger, Dana King"
+date: "8/3/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, include=FALSE}
+library(tidyverse)
+```
+# Introduction
+This report was prepared to the attention of the United Nations. It analyzes the relationship between a country's GDP, its life expectancy. Our goal is to determine to what degree a country’s economic strength or weakness may be related to its public health status. We hypothesize that  life expectancy increases with a country's GDP.
+
+```{r load_data, include=FALSE, echo=TRUE}
+gapminder_1997 <- read_csv("data/gapminder_1997.csv")
+```
+
+# Results
+
+## My plot
+```{r plot_gdp_lifeexp, echo=FALSE}
+ggplot(data=gapminder_1997) +
+  aes(x = gdpPercap, y = lifeExp) +
+  geom_point()
+```
+
+```{r calculate_summary_statistics, include=FALSE}
+nCountries <- gapminder_1997 %>% 
+  select(country) %>% 
+  n_distinct()
+
+minGDP <- gapminder_1997 %>% 
+  summarise(round(min(gdpPercap)))
+
+maxGDP <- gapminder_1997 %>% 
+  summarise(round(max(gdpPercap)))
+
+```
+
+For this analysis, `r nCountries` countries were analyzed for this report. The minimum GDP per capita was `r minGDP`, the maximum GPD per capita was `r maxGDP`.
+
+| Indicator  |  Value |
+|---|---|
+|  Minimum GDP | `r minGDP`   |
+|  Mean GDP | |
+|  Maximum GDP |  `r maxGDP` |
+
+```{r make_table_with_kable, echo=FALSE}
+gapminder_1997 %>% 
+  filter(continent=="Oceania") %>% 
+  knitr::kable()
+```
+
+

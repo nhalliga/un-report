@@ -12,4 +12,623 @@ drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 13:48 figures/
 -rw-r--r-- 1 nhalliga 1049089   1169 Jul 29 15:54 rev_Proof_of_Sortware_07292021.txt
 -rw-r--r-- 1 nhalliga 1049089 660206 Jul 19 10:04 rnd-un-data.csv
 $ git config --global user.name "nhalliga"
- git config --global user.email "nhalliga@umich.edu"
+$ git config --global user.email "nhalliga@umich.edu"
+$ git config --global core.autocrlf TRUE
+$ git config --global core.editor "nano -w"
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager-core
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=nhalliga
+user.email=nhalliga@umich.edu
+core.autocrlf=TRUE
+core.editor=nano -w
+
+$ git config -h
+usage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-pattern]
+    --get-all             get all values: key [value-pattern]
+    --get-regexp          get values for regexp: name-regex [value-pattern]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value-pattern]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-pattern]
+    --unset-all           remove all matches: name [value-pattern]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    --fixed-value         use string equality when comparing values to 'value-pattern'
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --type <>         value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --bool-or-str         value is --bool or string
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+    --show-scope          show scope of config (worktree, local, global, system, command)
+    --default <value>     with --get, use default value when missing entry
+
+$ pwd
+/h/My Documents/R/BASH_R_Workshop_08022021
+$ ls -l
+total 1180
+-rw-r--r-- 1 nhalliga 1049089    218 Aug  2 09:04 BASH_R_Workshop_08022021.Rproj
+-rw-r--r-- 1 nhalliga 1049089   2432 Aug  2 12:52 Courtney_gdp_population_example.R
+-rw-r--r-- 1 nhalliga 1049089  32055 Jul 19 10:12 Proof_of_R_software_07192021.txt
+-rw-r--r-- 1 nhalliga 1049089 492028 Jul 19 10:04 co2-un-data.csv
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 14:04 code/
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 13:54 data/
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 13:48 figures/
+-rw-r--r-- 1 nhalliga 1049089    815 Aug  2 14:45 github_setup_08022021.txt
+-rw-r--r-- 1 nhalliga 1049089   1169 Jul 29 15:54 rev_Proof_of_Sortware_07292021.txt
+-rw-r--r-- 1 nhalliga 1049089 660206 Jul 19 10:04 rnd-un-data.csv
+
+$ git init
+Initialized empty Git repository in H:/My Documents/R/BASH_R_Workshop_08022021/.git/
+$ ls -a
+./      .Rhistory     BASH_R_Workshop_08022021.Rproj     co2-un-data.csv  figures/                            rnd-un-data.csv
+../     .Rproj.user/  Courtney_gdp_population_example.R  code/            github_setup_08022021.txt
+.RData  .git/         Proof_of_R_software_07192021.txt   data/            rev_Proof_of_Sortware_07292021.txt
+
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .RData
+        .Rhistory
+        .Rproj.user/
+        BASH_R_Workshop_08022021.Rproj
+        Courtney_gdp_population_example.R
+        Proof_of_R_software_07192021.txt
+        co2-un-data.csv
+        code/
+        data/
+        figures/
+        github_setup_08022021.txt
+        rev_Proof_of_Sortware_07292021.txt
+        rnd-un-data.csv
+
+nothing added to commit but untracked files present (use "git add" to track)
+$ ls -al
+total 1188
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 14:56 ./
+drwxr-xr-x 1 nhalliga 1049089      0 Jul 19 10:04 ../
+-rw-r--r-- 1 nhalliga 1049089   2847 Jul 29 15:54 .RData
+-rw-r--r-- 1 nhalliga 1049089    476 Aug  2 09:36 .Rhistory
+drwxr-xr-x 1 nhalliga 1049089      0 Jul 19 10:04 .Rproj.user/
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 14:58 .git/
+-rw-r--r-- 1 nhalliga 1049089    218 Aug  2 09:04 BASH_R_Workshop_08022021.Rproj
+-rw-r--r-- 1 nhalliga 1049089   2432 Aug  2 12:52 Courtney_gdp_population_example.R
+-rw-r--r-- 1 nhalliga 1049089  32055 Jul 19 10:12 Proof_of_R_software_07192021.txt
+-rw-r--r-- 1 nhalliga 1049089 492028 Jul 19 10:04 co2-un-data.csv
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 14:04 code/
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 13:54 data/
+drwxr-xr-x 1 nhalliga 1049089      0 Aug  2 13:48 figures/
+-rw-r--r-- 1 nhalliga 1049089    815 Aug  2 14:45 github_setup_08022021.txt
+-rw-r--r-- 1 nhalliga 1049089   1169 Jul 29 15:54 rev_Proof_of_Sortware_07292021.txt
+-rw-r--r-- 1 nhalliga 1049089 660206 Jul 19 10:04 rnd-un-data.csv
+
+$ ls -a
+./      .Rhistory     BASH_R_Workshop_08022021.Rproj     co2-un-data.csv  figures/                   rev_Proof_of_Sortware_07292021.txt
+../     .Rproj.user/  Courtney_gdp_population_example.R  code/            github_setup_08022021.txt  rnd-un-data.csv
+.RData  .git/         Proof_of_R_software_07192021.txt   data/            notes.txt
+
+$ cat notes.txt
+we plotted life expectancy over time.
+
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .RData
+        .Rhistory
+        .Rproj.user/
+        BASH_R_Workshop_08022021.Rproj
+        Courtney_gdp_population_example.R
+        Proof_of_R_software_07192021.txt
+        co2-un-data.csv
+        code/
+        data/
+        figures/
+        github_setup_08022021.txt
+        notes.txt
+        rev_Proof_of_Sortware_07292021.txt
+        rnd-un-data.csv
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add notes.txt
+warning: LF will be replaced by CRLF in notes.txt.
+The file will have its original line endings in your working directory
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   notes.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .RData
+        .Rhistory
+        .Rproj.user/
+        BASH_R_Workshop_08022021.Rproj
+        Courtney_gdp_population_example.R
+        Proof_of_R_software_07192021.txt
+        co2-un-data.csv
+        code/
+        data/
+        figures/
+        github_setup_08022021.txt
+        rev_Proof_of_Sortware_07292021.txt
+        rnd-un-data.csv
+$ git add --all
+warning: LF will be replaced by CRLF in .Rhistory.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/pcs/files-pane.pper.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/pcs/packages-pane.pper.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/pcs/source-pane.pper.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/pcs/windowlayoutstate.pper.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/pcs/workbench-pane.pper.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/persistent-state.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/rmd-outputs.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/sources/per/t/E0777C2A.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/sources/per/t/E0777C2A-contents.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/sources/per/u/13FACF74.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/sources/per/u/13FACF74-contents.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/sources/prop/C3EE6189.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .Rproj.user/2CA0FE2C/sources/prop/INDEX.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in Courtney_gdp_population_example.R.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in co2-un-data.csv.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in code/check_setup.R.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in data/gapminder_1997.csv.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in data/gapminder_data.csv.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in rnd-un-data.csv.
+The file will have its original line endings in your working directory
+
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .RData
+        new file:   .Rhistory
+        new file:   .Rproj.user/2CA0FE2C/pcs/files-pane.pper
+        new file:   .Rproj.user/2CA0FE2C/pcs/packages-pane.pper
+        new file:   .Rproj.user/2CA0FE2C/pcs/source-pane.pper
+        new file:   .Rproj.user/2CA0FE2C/pcs/windowlayoutstate.pper
+        new file:   .Rproj.user/2CA0FE2C/pcs/workbench-pane.pper
+        new file:   .Rproj.user/2CA0FE2C/persistent-state
+        new file:   .Rproj.user/2CA0FE2C/rmd-outputs
+        new file:   .Rproj.user/2CA0FE2C/saved_source_markers
+        new file:   .Rproj.user/2CA0FE2C/sources/per/t/E0777C2A
+        new file:   .Rproj.user/2CA0FE2C/sources/per/t/E0777C2A-contents
+        new file:   .Rproj.user/2CA0FE2C/sources/per/u/13FACF74
+        new file:   .Rproj.user/2CA0FE2C/sources/per/u/13FACF74-contents
+        new file:   .Rproj.user/2CA0FE2C/sources/prop/C3EE6189
+        new file:   .Rproj.user/2CA0FE2C/sources/prop/INDEX
+        new file:   .Rproj.user/shared/notebooks/patch-chunk-names
+        new file:   BASH_R_Workshop_08022021.Rproj
+        new file:   Courtney_gdp_population_example.R
+        new file:   Proof_of_R_software_07192021.txt
+        new file:   co2-un-data.csv
+        new file:   code/check_setup.R
+        new file:   code/gdp_population.R
+        new file:   data/gapminder_1997.csv
+        new file:   data/gapminder_data.csv
+        new file:   figures/awesome_plot.jpg
+        new file:   figures/awesome_violin_plot.jpg
+        new file:   github_setup_08022021.txt
+        new file:   notes.txt
+        new file:   rev_Proof_of_Sortware_07292021.txt
+        new file:   rnd-un-data.csv
+
+$ git commit -m "Start notes on analysis"
+[master (root-commit) bac8cc3] Start notes on analysis
+ 31 files changed, 7504 insertions(+)
+ create mode 100644 .RData
+ create mode 100644 .Rhistory
+ create mode 100644 .Rproj.user/2CA0FE2C/pcs/files-pane.pper
+ create mode 100644 .Rproj.user/2CA0FE2C/pcs/packages-pane.pper
+ create mode 100644 .Rproj.user/2CA0FE2C/pcs/source-pane.pper
+ create mode 100644 .Rproj.user/2CA0FE2C/pcs/windowlayoutstate.pper
+ create mode 100644 .Rproj.user/2CA0FE2C/pcs/workbench-pane.pper
+ create mode 100644 .Rproj.user/2CA0FE2C/persistent-state
+ create mode 100644 .Rproj.user/2CA0FE2C/rmd-outputs
+ create mode 100644 .Rproj.user/2CA0FE2C/saved_source_markers
+ create mode 100644 .Rproj.user/2CA0FE2C/sources/per/t/E0777C2A
+ create mode 100644 .Rproj.user/2CA0FE2C/sources/per/t/E0777C2A-contents
+ create mode 100644 .Rproj.user/2CA0FE2C/sources/per/u/13FACF74
+ create mode 100644 .Rproj.user/2CA0FE2C/sources/per/u/13FACF74-contents
+ create mode 100644 .Rproj.user/2CA0FE2C/sources/prop/C3EE6189
+ create mode 100644 .Rproj.user/2CA0FE2C/sources/prop/INDEX
+ create mode 100644 .Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 BASH_R_Workshop_08022021.Rproj
+ create mode 100644 Courtney_gdp_population_example.R
+ create mode 100644 Proof_of_R_software_07192021.txt
+ create mode 100644 co2-un-data.csv
+ create mode 100644 code/check_setup.R
+ create mode 100644 code/gdp_population.R
+ create mode 100644 data/gapminder_1997.csv
+ create mode 100644 data/gapminder_data.csv
+ create mode 100644 figures/awesome_plot.jpg
+ create mode 100644 figures/awesome_violin_plot.jpg
+ create mode 100644 github_setup_08022021.txt
+ create mode 100644 notes.txt
+ create mode 100644 rev_Proof_of_Sortware_07292021.txt
+ create mode 100644 rnd-un-data.csv
+
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+$ git log
+commit bac8cc3e542cb5cde448fe4788175299d0777ebb (HEAD -> master)
+Author: nhalliga <nhalliga@umich.edu>
+Date:   Mon Aug 2 15:10:59 2021 -0400
+
+    Start notes on analysis
+
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   notes.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git diff
+warning: LF will be replaced by CRLF in notes.txt.
+The file will have its original line endings in your working directory
+diff --git a/notes.txt b/notes.txt
+index e5933d0..328f79b 100644
+--- a/notes.txt
++++ b/notes.txt
+@@ -1 +1,2 @@
+ we plotted life expectancy over time.
++Each point represents a country.
+$ git diff
+warning: LF will be replaced by CRLF in notes.txt.
+The file will have its original line endings in your working directory
+diff --git a/notes.txt b/notes.txt
+index e5933d0..328f79b 100644
+--- a/notes.txt
++++ b/notes.txt
+@@ -1 +1,2 @@
+ we plotted life expectancy over time.
++Each point represents a country.
+$ git add notes.txt
+warning: LF will be replaced by CRLF in notes.txt.
+The file will have its original line endings in your working directory
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   notes.txt
+
+$ git commit -m "changes in notes"
+[master af64180] changes in notes
+ 1 file changed, 1 insertion(+)
+$ nano notes.txt
+Error in /etc/nanorc on line 237: Error expanding /usr/share/nano/*.nanorc: No such file or directory
+$ cat notes.txt
+we plotted life expectancy over time.
+Each point represents a country.
+Continents are grouped by color
+$ git diff
+warning: LF will be replaced by CRLF in notes.txt.
+The file will have its original line endings in your working directory
+diff --git a/notes.txt b/notes.txt
+index 328f79b..0955574 100644
+--- a/notes.txt
++++ b/notes.txt
+@@ -1,2 +1,3 @@
+ we plotted life expectancy over time.
+ Each point represents a country.
++Continents are grouped by color
+
+$ git add notes.txt
+warning: LF will be replaced by CRLF in notes.txt.
+The file will have its original line endings in your working directory
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   notes.txt
+$ git commit -m "Add information on points"
+[master cd19a15] Add information on points
+ 1 file changed, 1 insertion(+)
+$ git status
+On branch master
+nothing to commit, working tree clean
+$ git log
+commit cd19a156c363f0c02a21b4b282dc62b50dff745f (HEAD -> master)
+Author: nhalliga <nhalliga@umich.edu>
+Date:   Mon Aug 2 15:25:22 2021 -0400
+
+    Add information on points
+
+commit af641800d3f0408439b1354379fab49c5abdb8d7
+Author: nhalliga <nhalliga@umich.edu>
+Date:   Mon Aug 2 15:20:54 2021 -0400
+
+    changes in notes
+
+commit bac8cc3e542cb5cde448fe4788175299d0777ebb
+Author: nhalliga <nhalliga@umich.edu>
+Date:   Mon Aug 2 15:10:59 2021 -0400
+
+    Start notes on analysis
+$ git log -1
+commit cd19a156c363f0c02a21b4b282dc62b50dff745f (HEAD -> master)
+Author: nhalliga <nhalliga@umich.edu>
+Date:   Mon Aug 2 15:25:22 2021 -0400
+
+    Add information on points
+$ mkdir analysis
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   github_setup_08022021.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ touch analysis/file-1.txt file-2.txt
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   github_setup_08022021.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        analysis/
+        file-2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+$ git add analysis
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   analysis/file-1.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   github_setup_08022021.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file-2.txt
+
+$ git commit -m "Create blank text files"
+[master a642a94] Create blank text files
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 analysis/file-1.txt
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   github_setup_08022021.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file-2.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ mkdir workshopTest
+$ cd workshopTest/
+$ git init
+Initialized empty Git repository in H:/My Documents/R/workshopTest/.git/
+$ ls -a
+./  ../  .git/
+$ nano notes.txt
+Error in /etc/nanorc on line 237: Error expanding /usr/share/nano/*.nanorc: No such file or directory
+$ git add notes.txt
+warning: LF will be replaced by CRLF in notes.txt.
+The file will have its original line endings in your working directory
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   notes.txt
+
+$ git commit -m "added a notes file"
+[master (root-commit) 9624e4c] added a notes file
+ 1 file changed, 3 insertions(+)
+ create mode 100644 notes.txt
+$ git log --oneline
+a642a94 (HEAD -> master) Create blank text files
+cd19a15 Add information on points
+af64180 changes in notes
+bac8cc3 Start notes on analysis
+$ git revert a642a94
+Removing analysis/file-1.txt
+Error in /etc/nanorc on line 237: Error expanding /usr/share/nano/*.nanorc: No such file or directory
+[master f1de77a] Revert "Create blank text files"
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 analysis/file-1.txt
+$ echo "here are my other notes" >> notes.txt
+$ nano notes.txt
+Error in /etc/nanorc on line 237: Error expanding /usr/share/nano/*.nanorc: No such file or directory
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   github_setup_08022021.txt
+        modified:   notes.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file-2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+$ git commit -m "reverted and add note"
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   github_setup_08022021.txt
+        modified:   notes.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file-2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Dana King  3:48 PM
+To go back one previous commitment, without creating a new commitment in the process, you can use the git checkout HEAD~1 [name of file] (edited) 
+
+$ pwd
+/h/My Documents/R/BASH_R_Workshop_08022021
+$ git remote add origin https://github.com/nhalliga/un-report.git
+$ git branch -M main
+$ git push -u origin main
+Enumerating objects: 55, done.
+Counting objects: 100% (55/55), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (46/46), done.
+Writing objects: 100% (55/55), 289.44 KiB | 830.00 KiB/s, done.
+Total 55 (delta 7), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (7/7), done.
+To https://github.com/nhalliga/un-report.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+$ git remote -v
+origin  https://github.com/nhalliga/un-report.git (fetch)
+origin  https://github.com/nhalliga/un-report.git (push)
+$ cd workshopTest/
+$ ls
+notes.txt
+$ git clone https://github.com/nhalliga/un-report.git nhalliga_un-report
+Cloning into 'nhalliga_un-report'...
+remote: Enumerating objects: 55, done.
+remote: Counting objects: 100% (55/55), done.
+remote: Compressing objects: 100% (39/39), done.
+remote: Total 55 (delta 7), reused 55 (delta 7), pack-reused 0
+Receiving objects: 100% (55/55), 289.44 KiB | 2.47 MiB/s, done.
+Resolving deltas: 100% (7/7), done.
+$ ls
+nhalliga_un-report/  notes.txt
+$ cd nhalliga_un-report/
+$ ls
+BASH_R_Workshop_08022021.Rproj     figures/
+Courtney_gdp_population_example.R  github_setup_08022021.txt
+Proof_of_R_software_07192021.txt   notes.txt
+co2-un-data.csv                    rev_Proof_of_Sortware_07292021.txt
+code/                              rnd-un-data.csv
+data/
+$ nano notes.txt
+Error in /etc/nanorc on line 237: Error expanding /usr/share/nano/*.nanorc: No such file or directory
+$ git add notes.txt
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   notes.txt
+$ git commit -m "list dependencies"
+[main a96b0a5] list dependencies
+ 1 file changed, 5 insertions(+)
+$ git push origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 320 bytes | 18.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/nhalliga/un-report.git
+   f1de77a..a96b0a5  main -> main
+
+
+
+
+$ cd BASH_R_Workshop_08022021/
+$ git pull origin main
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0
+Unpacking objects: 100% (3/3), 300 bytes | 6.00 KiB/s, done.
+From https://github.com/nhalliga/un-report
+ * branch            main       -> FETCH_HEAD
+   f1de77a..a96b0a5  main       -> origin/main
+error: Your local changes to the following files would be overwritten by merge:
+        notes.txt
+Please commit your changes or stash them before you merge.
+Aborting
+Updating f1de77a..a96b0a5
